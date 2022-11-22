@@ -59,7 +59,7 @@ namespace Catch {
         ErrnoGuard guard;
 #ifdef _MSC_VER
         size_t printedLength = static_cast<size_t>(
-            sprintf_s( buffer, "%.3f", duration ) );
+            ::sprintf_s( buffer, "%.3f", duration ) );
 #else
         size_t printedLength = static_cast<size_t>(
             std::snprintf( buffer, maxDoubleSize, "%.3f", duration ) );
