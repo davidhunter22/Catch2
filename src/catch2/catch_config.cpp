@@ -195,7 +195,7 @@ namespace Catch {
     ShowDurations Config::showDurations() const        { return m_data.showDurations; }
     double Config::minDuration() const                 { return m_data.minDuration; }
     TestRunOrder Config::runOrder() const              { return m_data.runOrder; }
-    uint32_t Config::rngSeed() const                   { return m_data.rngSeed; }
+    std::uint32_t Config::rngSeed() const              { return m_data.rngSeed; }
     unsigned int Config::shardCount() const            { return m_data.shardCount; }
     unsigned int Config::shardIndex() const            { return m_data.shardIndex; }
     ColourMode Config::defaultColourMode() const       { return m_data.defaultColourMode; }

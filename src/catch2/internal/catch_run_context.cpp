@@ -226,7 +226,7 @@ namespace Catch {
         //  it had when the generator for i was initialized.)
         seedRng( *m_config );
 
-        uint64_t testRuns = 0;
+        std::uint64_t testRuns = 0;
         do {
             m_trackerContext.startCycle();
             m_testCaseTracker = &SectionTracker::acquire(m_trackerContext, TestCaseTracking::NameAndLocation(testInfo.name, testInfo.lineInfo));

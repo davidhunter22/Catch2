@@ -25,7 +25,7 @@ namespace Catch {
 namespace {
 
     template <typename FP>
-    bool almostEqualUlps(FP lhs, FP rhs, uint64_t maxUlpDiff) {
+    bool almostEqualUlps(FP lhs, FP rhs, std::uint64_t maxUlpDiff) {
         // Comparison with NaN should always be false.
         // This way we can rule it out before getting into the ugly details
         if (Catch::isnan(lhs) || Catch::isnan(rhs)) {
@@ -51,8 +51,8 @@ namespace {
 #endif // ^^^ CATCH_CONFIG_GLOBAL_NEXTAFTER ^^^
 
 template <typename FP>
-FP step(FP start, FP direction, uint64_t steps) {
-    for (uint64_t i = 0; i < steps; ++i) {
+FP step(FP start, FP direction, std::uint64_t steps) {
+    for (std::uint64_t i = 0; i < steps; ++i) {
 #if defined(CATCH_CONFIG_GLOBAL_NEXTAFTER)
         start = Catch::nextafter(start, direction);
 #else
@@ -80,7 +80,7 @@ void write(std::ostream& out, FloatingPoint num) {
 namespace Matchers {
 namespace Detail {
 
-    enum class FloatingPointKind : uint8_t {
+    enum class FloatingPointKind : std::uint8_t {
         Float,
         Double
     };
@@ -105,10 +105,10 @@ namespace Detail {
     }
 
 
-    WithinUlpsMatcher::WithinUlpsMatcher(double target, uint64_t ulps, Detail::FloatingPointKind baseType)
+    WithinUlpsMatcher::WithinUlpsMatcher(double target, std::uint64_t ulps, Detail::FloatingPointKind baseType)
         :m_target{ target }, m_ulps{ ulps }, m_type{ baseType } {
         CATCH_ENFORCE(m_type == Detail::FloatingPointKind::Double
-                   || m_ulps < (std::numeric_limits<uint32_t>::max)(),
+                   || m_ulps < (std::numeric_limits<std::uint32_t>::max)(),
             "Provided ULP is impossibly large for a float comparison.");
         CATCH_ENFORCE( std::numeric_limits<double>::is_iec559,
                        "WithinUlp matcher only supports platforms with "
@@ -196,11 +196,11 @@ namespace Detail {
     }
 
 
-WithinUlpsMatcher WithinULP(double target, uint64_t maxUlpDiff) {
+WithinUlpsMatcher WithinULP(double target, std::uint64_t maxUlpDiff) {
     return WithinUlpsMatcher(target, maxUlpDiff, Detail::FloatingPointKind::Double);
 }
 
-WithinUlpsMatcher WithinULP(float target, uint64_t maxUlpDiff) {
+WithinUlpsMatcher WithinULP(float target, std::uint64_t maxUlpDiff) {
     return WithinUlpsMatcher(target, maxUlpDiff, Detail::FloatingPointKind::Float);
 }
 

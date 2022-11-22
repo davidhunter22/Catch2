@@ -34,7 +34,7 @@ namespace Catch {
         explicit SimplePcg32(result_type seed_);
 
         void seed(result_type seed_);
-        void discard(uint64_t skip);
+        void discard(std::uint64_t skip);
 
         result_type operator()();
 

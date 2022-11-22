@@ -17,7 +17,7 @@
 namespace Catch {
 
     namespace {
-        using TCP_underlying_type = uint8_t;
+        using TCP_underlying_type = std::uint8_t;
         static_assert(sizeof(TestCaseProperties) == sizeof(TCP_underlying_type),
                       "The size of the TestCaseProperties is different from the assumed size");
 

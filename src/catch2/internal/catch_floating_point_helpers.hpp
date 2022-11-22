@@ -19,8 +19,8 @@
 namespace Catch {
     namespace Detail {
 
-        uint32_t convertToBits(float f);
-        uint64_t convertToBits(double d);
+        std::uint32_t convertToBits(float f);
+        std::uint64_t convertToBits(double d);
 
     } // end namespace Detail
 
@@ -52,7 +52,7 @@ namespace Catch {
      * \pre floating point numbers are represented in IEEE-754 format
      */
     template <typename FP>
-    uint64_t ulpDistance( FP lhs, FP rhs ) {
+    std::uint64_t ulpDistance( FP lhs, FP rhs ) {
         assert( std::numeric_limits<FP>::is_iec559 &&
             "ulpDistance assumes IEEE-754 format for floating point types" );
         assert( !Catch::isnan( lhs ) &&
@@ -81,8 +81,8 @@ namespace Catch {
         // When both lhs and rhs are of the same sign, we can just
         // read the numbers bitwise as integers, and then subtract them
         // (assuming IEEE).
-        uint64_t lc = Detail::convertToBits( lhs );
-        uint64_t rc = Detail::convertToBits( rhs );
+        std::uint64_t lc = Detail::convertToBits( lhs );
+        std::uint64_t rc = Detail::convertToBits( rhs );
 
         // The ulp distance between two numbers is symmetric, so to avoid
         // dealing with overflows we want the bigger converted number on the lhs

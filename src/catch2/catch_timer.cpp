@@ -12,7 +12,7 @@
 namespace Catch {
 
     namespace {
-        static auto getCurrentNanosecondsSinceEpoch() -> uint64_t {
+        static auto getCurrentNanosecondsSinceEpoch() -> std::uint64_t {
             return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
         }
     } // end unnamed namespace
@@ -20,10 +20,10 @@ namespace Catch {
     void Timer::start() {
        m_nanoseconds = getCurrentNanosecondsSinceEpoch();
     }
-    auto Timer::getElapsedNanoseconds() const -> uint64_t {
+    auto Timer::getElapsedNanoseconds() const -> std::uint64_t {
         return getCurrentNanosecondsSinceEpoch() - m_nanoseconds;
     }
-    auto Timer::getElapsedMicroseconds() const -> uint64_t {
+    auto Timer::getElapsedMicroseconds() const -> std::uint64_t {
         return getElapsedNanoseconds()/1000;
     }
     auto Timer::getElapsedMilliseconds() const -> unsigned int {

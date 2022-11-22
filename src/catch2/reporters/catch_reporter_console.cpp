@@ -213,10 +213,10 @@ class Duration {
         Seconds,
         Minutes
     };
-    static const uint64_t s_nanosecondsInAMicrosecond = 1000;
-    static const uint64_t s_nanosecondsInAMillisecond = 1000 * s_nanosecondsInAMicrosecond;
-    static const uint64_t s_nanosecondsInASecond = 1000 * s_nanosecondsInAMillisecond;
-    static const uint64_t s_nanosecondsInAMinute = 60 * s_nanosecondsInASecond;
+    static const std::uint64_t s_nanosecondsInAMicrosecond = 1000;
+    static const std::uint64_t s_nanosecondsInAMillisecond = 1000 * s_nanosecondsInAMicrosecond;
+    static const std::uint64_t s_nanosecondsInASecond = 1000 * s_nanosecondsInAMillisecond;
+    static const std::uint64_t s_nanosecondsInAMinute = 60 * s_nanosecondsInASecond;
 
     double m_inNanoseconds;
     Unit m_units;

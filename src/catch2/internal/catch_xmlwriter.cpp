@@ -31,7 +31,7 @@ namespace {
         CATCH_INTERNAL_ERROR("Invalid multibyte utf-8 start byte encountered");
     }
 
-    uint32_t headerValue(unsigned char c) {
+    std::uint32_t headerValue(unsigned char c) {
         if ((c & 0xE0) == 0xC0) {
             return c & 0x1F;
         }
@@ -145,7 +145,7 @@ namespace {
                 // The next encBytes bytes must together be a valid utf-8
                 // This means: bitpattern 10XX XXXX and the extracted value is sane (ish)
                 bool valid = true;
-                uint32_t value = headerValue(c);
+                std::uint32_t value = headerValue(c);
                 for (std::size_t n = 1; n < encBytes; ++n) {
                     unsigned char nc = static_cast<unsigned char>(m_str[idx + n]);
                     valid &= ((nc & 0xC0) == 0x80);

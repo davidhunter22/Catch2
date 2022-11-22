@@ -16,8 +16,8 @@ namespace {
 #pragma warning(disable:4146) // we negate uint32 during the rotate
 #endif
         // Safe rotr implementation thanks to John Regehr
-        uint32_t rotate_right(uint32_t val, uint32_t count) {
-            const uint32_t mask = 31;
+        std::uint32_t rotate_right(std::uint32_t val, std::uint32_t count) {
+            const std::uint32_t mask = 31;
             count &= mask;
             return (val >> count) | (val << (-count & mask));
         }
@@ -41,17 +41,17 @@ namespace {
         (*this)();
     }
 
-    void SimplePcg32::discard(uint64_t skip) {
+    void SimplePcg32::discard(std::uint64_t skip) {
         // We could implement this to run in O(log n) steps, but this
         // should suffice for our use case.
-        for (uint64_t s = 0; s < skip; ++s) {
+        for (std::uint64_t s = 0; s < skip; ++s) {
             static_cast<void>((*this)());
         }
     }
 
     SimplePcg32::result_type SimplePcg32::operator()() {
         // prepare the output value
-        const uint32_t xorshifted = static_cast<uint32_t>(((m_state >> 18u) ^ m_state) >> 27u);
+        const std::uint32_t xorshifted = static_cast<std::uint32_t>(((m_state >> 18u) ^ m_state) >> 27u);
         const auto output = rotate_right(xorshifted, m_state >> 59u);
 
         // advance state

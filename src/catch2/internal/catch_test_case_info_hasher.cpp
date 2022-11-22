@@ -12,7 +12,7 @@
 namespace Catch {
     TestCaseInfoHasher::TestCaseInfoHasher( hash_t seed ): m_seed( seed ) {}
 
-    uint32_t TestCaseInfoHasher::operator()( TestCaseInfo const& t ) const {
+    std::uint32_t TestCaseInfoHasher::operator()( TestCaseInfo const& t ) const {
         // FNV-1a hash algorithm that is designed for uniqueness:
         const hash_t prime = 1099511628211u;
         hash_t hash = 14695981039346656037u;
@@ -32,8 +32,8 @@ namespace Catch {
         }
         hash ^= m_seed;
         hash *= prime;
-        const uint32_t low{ static_cast<uint32_t>( hash ) };
-        const uint32_t high{ static_cast<uint32_t>( hash >> 32 ) };
+        const std::uint32_t low{ static_cast<std::uint32_t>( hash ) };
+        const std::uint32_t high{ static_cast<std::uint32_t>( hash >> 32 ) };
         return low * high;
     }
 } // namespace Catch

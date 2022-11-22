@@ -96,7 +96,7 @@ namespace Catch {
 
     void
     MultiReporter::testCasePartialStarting( TestCaseInfo const& testInfo,
-                                                uint64_t partNumber ) {
+                                                std::uint64_t partNumber ) {
         for ( auto& reporterish : m_reporterLikes ) {
             reporterish->testCasePartialStarting( testInfo, partNumber );
         }
@@ -135,7 +135,7 @@ namespace Catch {
     }
 
     void MultiReporter::testCasePartialEnded( TestCaseStats const& testStats,
-                                                  uint64_t partNumber ) {
+                                                  std::uint64_t partNumber ) {
         if ( m_preferences.shouldRedirectStdOut &&
              m_haveNoncapturingReporters ) {
             if ( !testStats.stdOut.empty() ) {

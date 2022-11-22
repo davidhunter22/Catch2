@@ -18,7 +18,7 @@ namespace Catch {
     public:
         using hash_t = std::uint64_t;
         TestCaseInfoHasher( hash_t seed );
-        uint32_t operator()( TestCaseInfo const& t ) const;
+        std::uint32_t operator()( TestCaseInfo const& t ) const;
 
     private:
         hash_t m_seed;

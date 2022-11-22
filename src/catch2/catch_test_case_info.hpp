@@ -44,7 +44,7 @@ namespace Catch {
 
     class ITestInvoker;
 
-    enum class TestCaseProperties : uint8_t {
+    enum class TestCaseProperties : std::uint8_t {
         None = 0,
         IsHidden = 1 << 1,
         ShouldFail = 1 << 2,

@@ -13,16 +13,16 @@
 namespace Catch {
     namespace Detail {
 
-        uint32_t convertToBits(float f) {
-            static_assert(sizeof(float) == sizeof(uint32_t), "Important ULP matcher assumption violated");
-            uint32_t i;
+        std::uint32_t convertToBits(float f) {
+            static_assert(sizeof(float) == sizeof(std::uint32_t), "Important ULP matcher assumption violated");
+            std::uint32_t i;
             std::memcpy(&i, &f, sizeof(f));
             return i;
         }
 
-        uint64_t convertToBits(double d) {
-            static_assert(sizeof(double) == sizeof(uint64_t), "Important ULP matcher assumption violated");
-            uint64_t i;
+        std::uint64_t convertToBits(double d) {
+            static_assert(sizeof(double) == sizeof(std::uint64_t), "Important ULP matcher assumption violated");
+            std::uint64_t i;
             std::memcpy(&i, &d, sizeof(d));
             return i;
         }
