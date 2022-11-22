@@ -47,7 +47,7 @@ using Catch::Benchmark::Detail::sample;
         // Code accompanying the article "Approximating the erfinv function" in GPU Computing Gems, Volume 2
         double w, p;
 
-        w = -log((1.0 - x) * (1.0 + x));
+        w = -std::log((1.0 - x) * (1.0 + x));
 
         if (w < 6.250000) {
             w = w - 3.125000;
@@ -75,7 +75,7 @@ using Catch::Benchmark::Detail::sample;
             p = 0.24015818242558961693 + p * w;
             p = 1.6536545626831027356 + p * w;
         } else if (w < 16.000000) {
-            w = sqrt(w) - 3.250000;
+            w = std::sqrt(w) - 3.250000;
             p = 2.2137376921775787049e-09;
             p = 9.0756561938885390979e-08 + p * w;
             p = -2.7517406297064545428e-07 + p * w;
@@ -96,7 +96,7 @@ using Catch::Benchmark::Detail::sample;
             p = 1.0052589676941592334 + p * w;
             p = 3.0838856104922207635 + p * w;
         } else {
-            w = sqrt(w) - 5.000000;
+            w = std::sqrt(w) - 5.000000;
             p = -2.7109920616438573243e-11;
             p = -2.5556418169965252055e-10 + p * w;
             p = 1.5076572693500548083e-09 + p * w;

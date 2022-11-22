@@ -20,7 +20,6 @@
 #include <iomanip>
 #include <limits>
 
-
 namespace Catch {
 namespace {
 
@@ -41,11 +40,11 @@ namespace {
 #if defined(CATCH_CONFIG_GLOBAL_NEXTAFTER)
 
     float nextafter(float x, float y) {
-        return ::nextafterf(x, y);
+        return std::nextafterf(x, y);
     }
 
     double nextafter(double x, double y) {
-        return ::nextafter(x, y);
+        return std::nextafter(x, y);
     }
 
 #endif // ^^^ CATCH_CONFIG_GLOBAL_NEXTAFTER ^^^
