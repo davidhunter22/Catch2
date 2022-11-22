@@ -24,14 +24,14 @@ namespace Catch {
 
     bool StringRef::operator<(StringRef rhs) const noexcept {
         if (m_size < rhs.m_size) {
-            return strncmp(m_start, rhs.m_start, m_size) <= 0;
+            return std::strncmp(m_start, rhs.m_start, m_size) <= 0;
         }
-        return strncmp(m_start, rhs.m_start, rhs.m_size) < 0;
+        return std::strncmp(m_start, rhs.m_start, rhs.m_size) < 0;
     }
 
     int StringRef::compare( StringRef rhs ) const {
         auto cmpResult =
-            strncmp( m_start, rhs.m_start, std::min( m_size, rhs.m_size ) );
+            std::strncmp( m_start, rhs.m_start, std::min( m_size, rhs.m_size ) );
 
         // This means that strncmp found a difference before the strings
         // ended, and we can return it directly
